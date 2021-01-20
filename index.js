@@ -23,7 +23,7 @@ if (origin.toLowerCase() === '--help') {
     console.log(pjson.name, pjson.version, "© 2021", pjson.author);
     console.log('How to use:');
     console.log('appyaml-envloader {origin-file}');
-    console.log('eg: "appyaml-envloader app.tempalte.yaml"');
+    console.log('eg: "appyaml-envloader app.template.yaml"');
     console.log('this will generate a genuine app.yaml');
     console.log('replacing all {{ENV_VAR}} (Eg. `DB_PASS: {{CI_DB_PASSWORD}}`)');
     console.log('it internally uses basic handlebars');
