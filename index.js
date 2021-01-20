@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const yargs = require('yargs/yargs');
 const {hideBin} = require('yargs/helpers');
 const yaml = require('yaml');

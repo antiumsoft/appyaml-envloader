@@ -1,6 +1,7 @@
 {
   "name": "@antiumsoft/appyaml-envloader",
   "version": "1.0.1",
+  "bin": "./index.js",
   "description": "Automatically loads app.yaml environment variables from CI Env Variables",
   "main": "index.js",
   "scripts": {
