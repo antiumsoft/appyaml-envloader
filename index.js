@@ -1,15 +1,17 @@
 const yargs = require('yargs/yargs');
 const {hideBin} = require('yargs/helpers');
 const yaml = require('yaml');
+const Handlebars = require('handlebars');
 
-const path = require('path');
 const fs = require('fs');
 
 // read process arg values
 const argv = yargs(hideBin(process.argv)).argv._;
 
 // read origin file name
-const [origin] = argv;
+const [origin, output1] = argv;
+
+const output = output1 || 'app.yaml';
 
 if (!origin) {
     console.error("You need to specify a origin file name, if unsure try to run with the `--help` flag");
@@ -32,7 +34,11 @@ if (origin.toLowerCase() === '--help') {
 try {
     fs.statSync(origin);
     const file = fs.readFileSync(origin).toString('utf-8');
-    console.log(file);
+    const template = Handlebars.compile(file);
+    const result = template(process.env);
+    const parsed = yaml.parse(result); // validate YAML
+    fs.writeFileSync(output, yaml.stringify(parsed), {encoding: "utf-8"});
+    console.log("Wrote file", output);
     process.exit(0);
 } catch (e) {
     console.error("There was an error running the application", e.message);

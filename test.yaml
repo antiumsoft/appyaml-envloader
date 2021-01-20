@@ -1,2 +1,2 @@
 wololo:
-  ENV: {{PATH}}
+  ENV: {{TESTER}}
